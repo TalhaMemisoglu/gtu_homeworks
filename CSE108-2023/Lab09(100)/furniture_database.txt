@@ -1,0 +1,35 @@
+Name: Leather_Armchair
+Color: Brown
+Price: 799.00
+Serial_Number: 123456
+Quantity: 2
+
+Name: Glass_Coffee_Table
+Color: Clear
+Price: 299
+Serial Number: 234567
+Quantity: 1
+
+Name: Queen_Size_Bed
+Color: White
+Price: 999.00
+SeriaNumber: 345678
+Quantity: 1
+
+Name: Wooden_Dining_Table
+Color: Oak
+Price: 599.00
+Serial_Number: 456789
+Quantity: 1
+
+Name: Fabric_Sofa
+Color: Gray
+Price: 899.00
+Serial_Number: 567890
+Quantity: 3
+
+Name: Bookshelf
+Color: Black
+Price: 399.00
+Serial_Number: 678901
+Quantity: 2
