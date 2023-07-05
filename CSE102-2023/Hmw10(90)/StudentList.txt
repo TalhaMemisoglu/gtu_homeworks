@@ -1,0 +1,60 @@
+00001
+Meral Aksener
+0
+0
+0
+00002
+Ekrem Imamoglu
+0
+0
+0
+00003
+Bilge Yilmaz
+0
+0
+0
+00004
+Muharrem Ince
+0
+0
+0
+00005
+Recep Tayyip Erdogan
+0
+0
+0
+00006
+Umit Ozdag
+0
+0
+0
+00007
+Kemal Kilicdaroglu
+0
+0
+0
+00008
+Mansur Yavas
+0
+0
+0
+00009
+Mehmet Simsek
+0
+0
+0
+00010
+Hakan Fidan
+0
+0
+0
+00011
+Cem Toker
+0
+0
+0
+00012
+Ozgur Demirtas
+0
+0
+0 
