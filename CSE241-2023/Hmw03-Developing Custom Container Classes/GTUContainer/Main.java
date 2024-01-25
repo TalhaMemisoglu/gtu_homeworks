@@ -62,7 +62,7 @@ public class Main {
         System.out.printf("Set: %s\n",mySet);
         System.out.printf("Equality: %b\n\n",myVector.equals(mySet));
 
-        JavaIterator<Integer> i = myVector.getIterator();
+        var i = myVector.getIterator();
         int current = 0;
         System.out.println("Iterator Test for the Vector:");
         while(i.hasNext())
@@ -73,7 +73,7 @@ public class Main {
         }
         System.out.println();
 
-        JavaIterator<Integer> j = mySet.getIterator();
+        var j = mySet.getIterator();
         current = 0;
         System.out.println("Iterator Test for the Set:");
         while(j.hasNext())
