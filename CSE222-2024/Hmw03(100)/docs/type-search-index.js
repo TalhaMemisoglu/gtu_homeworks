@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"Hmw03","l":"Camera"},{"p":"Hmw03","l":"Device"},{"p":"Hmw03","l":"GamingConsole"},{"p":"Hmw03","l":"Headphone"},{"p":"Hmw03","l":"Inventory"},{"p":"Hmw03","l":"Laptop"},{"p":"Hmw03","l":"Main"},{"p":"Hmw03","l":"Smartphone"},{"p":"Hmw03","l":"Television"}]
