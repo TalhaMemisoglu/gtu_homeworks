@@ -1,0 +1,436 @@
+Begin Data Section
+0 0 # PC
+1 0 # SP
+2 0 # System call result 
+3 0 # Number of instructions executed so far 
+4 0
+5 0
+6 0
+7 0
+8 0
+9 0 
+10 0
+11 0
+12 0
+13 0
+14 0 
+15 0
+16 0 
+17 0
+18 0
+19 0
+20 0 # Register end
+End Data Section
+Begin Instruction Section
+# initialization of Thread Tables
+0 SET 0 30 # Thread ID 0 --- OS Thread Table ---
+1 CPY 3 31 # Starting Time
+2 SET 0 32 # Instruction so far
+3 SET 1 33 # Ready (1) State
+4 SET 0 34 # Register 0
+5 SET 1000 35 # Register 1
+6 SET 1 55 # Thread ID 1 --- Thread 1 Table ---
+7 CPY 3 56 # Starting Time
+8 SET 0 57 # Instruction so far
+9 SET 1 58 # Ready (1) State
+10 SET 1000 59 # Register 0
+11 SET 2000 60 # Register 1
+12 SET 2 80 # Thread ID 2 --- Thread 2 Table ---
+13 CPY 3 81 # Starting Time
+14 SET 0 82 # Instruction so far
+15 SET 1 83 # Ready (1) State
+16 SET 2000 84 # Register 0
+17 SET 3000 85 # Register 1
+18 SET 3 105 # Thread ID 3 --- Thread 3 Table ---
+19 CPY 3 106 # Starting Time
+20 SET 0 107 # Instruction so far
+21 SET 1 108 # Ready (1) State
+22 SET 3000 109 # Register 0
+23 SET 4000 110 # Register 1
+24 SET 4 130 # Thread ID 4 --- Thread 4 Table ---
+25 CPY 3 131 # Starting Time
+26 SET 0 132 # Instruction so far
+27 SET 1 133 # Ready (1) State
+28 SET 4000 134 # Register 0
+29 SET 5000 135 # Register 1
+30 SET 5 155 # Thread ID 5 --- Thread 5 Table ---
+31 CPY 3 156 # Starting Time
+32 SET 0 157 # Instruction so far
+33 SET 1 158 # Ready (1) State
+34 SET 5000 159 # Register 0
+35 SET 6000 160 # Register 1
+36 SET 6 180 # Thread ID 6 --- Thread 6 Table ---
+37 CPY 3 181 # Starting Time
+38 SET 0 182 # Instruction so far
+39 SET 1 183 # Ready (1) State
+40 SET 6000 184 # Register 0
+41 SET 7000 185 # Register 1
+42 SET 7 205 # Thread ID 7 --- Thread 7 Table ---
+43 CPY 3 206 # Starting Time
+44 SET 0 207 # Instruction so far
+45 SET 1 208 # Ready (1) State
+46 SET 7000 209 # Register 0
+47 SET 8000 210 # Register 1
+48 SET 8 230 # Thread ID 8 --- Thread 8 Table ---
+49 CPY 3 231 # Starting Time
+50 SET 0 232 # Instruction so far
+51 SET 1 233 # Ready (1) State
+52 SET 8000 234 # Register 0
+53 SET 9000 235 # Register 1
+54 SET 9 255 # Thread ID 9 --- Thread 9 Table ---
+55 CPY 3 256 # Starting Time
+56 SET 0 257 # Instruction so far
+57 SET 1 258 # Ready (1) State
+58 SET 9000 259 # Register 0
+59 SET 10000 260 # Register 1
+60 SET 0 279 # Register 20
+61 SET 10 280 # Thread ID 10 --- Thread 10 Table ---
+62 CPY 3 281 # Starting Time
+63 SET 0 282 # Instruction so far
+64 SET 1 283 # Ready (1) State
+65 SET 10000 284 # Register 0
+66 SET 11000 285 # Register 1
+# End of the initialization of thread tables
+
+67 SET 54 21 # Tracking
+68 SET 0 22 # i index
+69 SET 0 23 # j index
+70 SET 10 24 # Working Thread Number
+71 SET 0 25 # Temp Value
+72 SET 0 26 # Temp Value 2
+73 CPY 21 27 # Tracking state of threads
+74 SET 500 28 # Thread PC
+75 SET 54 29 #Current Thread
+76 SET 0 400 # 0
+77 SET 1 401 # 1
+78 SET 2 402 # 2
+
+79 JIF 400 114 #initialization ends jump to Next thread [CAUTION JIF!!!!]
+
+#HLT
+80 CPY 21 27
+81 ADD 27 -21 #We takes state of thread
+82 SET 400 25
+83 CPYI2 25 27 #Set 0 to state (Halted)
+84 ADD 24 -1 #Decrase working thread count
+85 JIF 400 90 #Jump to copy registers to thread table
+
+#YIELD
+#Set current thread is ready state
+86 CPY 21 27
+87 ADD 27 -21 #We takes state of that thread
+88 SET 401 25
+89 CPYI2 25 27 #Set 1 to state (Ready)
+
+#PRINT
+#Copy Registers to thread table
+90 SET 20 22 #Set i index to 20
+91 CPY 21 23 #Set j index to thread table registers
+92 CPYI2 22 23 # loop start 
+93 ADD 22 -1 # i--
+94 ADD 23 -1 # j--
+95 JIF 22 97 #jump to end [CAUTION JIF!!!!]
+96 JIF 400 92 #return loop start [CAUTION JIF!!!!]
+97 CPYI2 28 23 #end
+98 CPY 21 25 #Setting number of execution to thread table 
+99 ADD 25 -22
+100 SET 3 26
+101 ADD 3 -19
+102 CPYI2 26 25
+
+#Set OS thread state for running
+103 SET 2 33 # Running state
+#Current thread is OS
+104 SET 54 29
+
+#Load OS thread table to registers !!!!!!!!!!!!!!!!!!
+105 SET 20 22 #Set i index to 20
+106 SET 54 25 # Take OS'thread table 
+107 CPY 25 23 #Set j index to thread table registers
+108 CPYI2 23 22 # loop start
+109 ADD 22 -1 # i--
+110 ADD 23 -1 # j--
+111 JIF 22 113 #jump to HLT control [CAUTION JIF!!!!]
+112 JIF 400 108 #return loop start [CAUTION JIF!!!!]
+
+#HLT Control (if all thread is halt, halt the cpu )
+113 JIF 24 161 #jump to Load OS registers and then halt [CAUTION JIF!!!!]
+#End of the control
+
+# Next Thread
+114 ADD 21 25
+115 CPY 21 27
+116 ADD 27 -21
+
+#Checking if current thread is last one
+117 SET 329 25
+118 CPY 21 26
+119 SUBI 25 26
+120 JIF 26 122 # Jump to set memory[21] to 79 (thread 1) [CAUTION JIF!!!!]
+121 JIF 400 124 # Jump to checking current thread is halted [CAUTION JIF!!!!]
+122 SET 79 21 # Set memory[21] to 79 (thread 1)
+123 SET 58 27 #Take current state of thread 1
+#Checking end
+
+#Checking current thread is halted
+124 CPYI 27 25 
+125 JIF 25 114 #Jump next thread [CAUTION JIF!!!!]
+
+#Checking current thread is blocked
+126 CPY 21 25
+127 ADD 25 -21
+128 CPYI 25 26
+129 ADD 26 -2
+130 JIF 26 132 #Jump to load OS registers to OS thread table then proceed [CAUTION JIF!!!!]
+131 JIF 400 114 #Jump to next thread [CAUTION JIF!!!!]
+
+#Load OS registers to OS thread table then proceed with next thread
+132 SET 20 22 #Set i index to 20
+133 SET 54 25
+134 CPY 25 23 #Set j index to thread table registers
+135 CPYI2 22 23 # loop start 
+136 ADD 22 -1 # i--
+137 ADD 23 -1 # j--
+138 JIF 22 140 #jump to end [CAUTION JIF!!!!]
+139 JIF 400 135 #return loop start [CAUTION JIF!!!!]
+140 SET 54 25 #Setting number of execution to thread table end 
+141 ADD 25 -22
+142 SET 3 26
+143 ADD 3 -19
+144 CPYI2 26 25
+145 CPYI2 400 23
+
+#Set OS thread is ready state
+146 SET 1 33
+
+#Set current thread is running state
+147 CPY 21 27
+148 ADD 27 -21 #We takes state of that thread
+149 SET 402 25
+150 CPYI2 25 27 #Set 1 to state (Running)
+
+#Set next thread is Current thread
+151 CPY 21 29
+
+#Copy from thread table to registers
+152 SET 20 22 #Set i index to 20
+153 CPY 21 23 #Set j index to thread table registers
+154 CPYI2 23 22 # loop start
+155 ADD 22 -1 # i--
+156 ADD 23 -1 # j--
+157 JIF 22 159 #jump to (END) [CAUTION JIF!!!!]
+158 JIF 400 154 #return loop start [CAUTION JIF!!!!]
+159 CPYI 23 25 (END) 
+160 USER 25 #SET PC
+
+#Load OS registers to OS thread table and then halt
+161 SET 1 33 #Set OS thread is ready state
+162 SET 20 22 #Set i index to 20
+163 SET 54 25
+164 CPY 25 23 #Set j index to thread table registers
+165 CPYI2 22 23 # loop start 
+166 ADD 22 -1 # i--
+167 ADD 23 -1 # j--
+168 JIF 22 170 #jump to end [CAUTION JIF!!!!]
+169 JIF 400 165 #return loop start [CAUTION JIF!!!!]
+170 CPYI2 400 23 #end
+171 CPY 21 25 #Setting number of execution to thread table end
+172 ADD 25 -22
+173 SET 3 26
+174 ADD 3 -19
+175 CPYI2 26 25
+
+176 HLT
+End Instruction Section
+Begin Data Section #Thread 1
+21 0
+22 0
+23 0
+24 0
+25 0
+26 20
+27 10
+28 0
+29 0
+30 0
+31 0
+32 0
+33 0
+34 0
+35 0
+36 0
+37 0
+38 0
+39 0
+40 0
+41 0
+42 0
+43 0
+44 0
+45 0
+46 0
+End Data Section
+Begin Instruction Section
+0 SET 10 21 # i = 10
+1 SET 0 22 # sum = 0
+2 ADDI 21 22 # sum = sum + i
+3 ADD 21 -1 # i = i – 1
+4 JIF 21 8 # Go to 8 if i <= 0
+5 SYSCALL YIELD
+6 SET 0 46 
+7 SET 2 0 # Go to 2 – remember address 0 is the program counter
+8 SYSCALL PRN 22
+9 SYSCALL HLT # end of program, the result is in memory address 21 (sum)
+End Instruction Section
+Begin Data Section  #Thread 2
+24 5     # N = 5
+25 2027  # Starting address
+26 14    # Key
+27 4     # A[0]
+28 2     # A[1]
+29 9     # A[2]
+30 14    # A[3]
+31 3     # A[4]
+100 0    
+101 0    
+102 0    
+103 0     
+104 0    
+105 0    
+106 0     
+107 0    
+108 0    
+109 0
+End Data Section
+Begin Instruction Section
+0 CPY 25 100 #Set starting point to 100
+1 CPY 25 101
+2 ADDI 24 101 #101 = last one
+3 ADD 101 -1
+4 CPY 26 102 #loop start 102 = Key
+5 CPYI 100 103 #103 = index  
+6 SUBI 102 103
+7 JIF 103 11 #jump to next control
+8 ADD 100 1
+9 SYSCALL YIELD
+10 JIF 400 4 # loop start
+11 CPYI 100 103 #next control
+12 SUBI 103 102
+13 JIF 102 16 #jump print and halt
+14 ADD 100 1
+15 JIF 400 4 #jump to loop
+
+#Print and halt
+16 CPY 25 102
+17 SUBI 100 102
+18 SYSCALL PRN 102
+19 SYSCALL HLT
+End Instruction Section
+Begin Data Section  #Thread 3
+24 5     # N = 5
+25 3026  # Starting address
+26 14    # A[0]
+27 7     # A[1]
+28 2     # A[2]
+29 9     # A[3]
+30 4     # A[4]
+100 0    # i (outer loop)
+101 0    # i + 1
+102 0    # j (inner loop)
+103 0    # j + 1 
+104 0    # N - i - 1
+105 0    # N - 1
+106 0    # temp1 
+107 0    # temp2
+108 0    # temp3 
+109 0    # temp4
+End Data Section
+Begin Instruction Section
+0 CPY 25 100 # i = Start Point
+1 CPY 100 101 # 101 = i
+2 ADD 101 1 # i + 1
+3 CPY 24 102 # j = N
+4 ADDI 100 102 # j = N + Start Point
+5 ADD 102 -1 # j = N + Start Point - 1
+
+#Comparison
+6 CPYI 100 106 #Array[i]
+7 CPYI 101 107 #Array[i + 1]
+8 SUBI 106 107 #107 = Array[i]-Array[i + 1]
+9 JIF 107 14 # Skip swap
+
+#Swap 
+10 CPYI 101 106 # temp(106) = array[i + 1]
+11 CPYI2 100 101
+12 SET 3106 107
+13 CPYI2 107 100
+
+#Counters
+14 ADD 100 1 # i++
+15 ADD 101 1 #i+1 ++
+16 CPY 100 106 
+17 SUBI 102 106 #106 = j-i
+18 JIF 106 20 #jump to i = start point
+19 JIF 400 6 #jump to comparison
+
+#i = start point
+20 CPY 25 100 #i = start point
+21 CPY 100 101 #settin i + 1
+22 ADD 101 1
+23 ADD 102 -1 #j--
+24 CPY 100 106 
+25 SUBI 102 106 # 106 = j - i
+26 JIF 106 29 #Jump to print
+27 SYSCALL YIELD
+28 JIF 400 6 #Jump to comparison
+
+#Printing loop
+29 CPY 25 106 #Set starting point to k
+30 CPY 25 107
+31 ADDI 24 107 #107 = last one
+32 ADD 107 -1
+33 CPYI 106 108 #loop start
+34 SYSCALL PRN 108
+35 CPY 106 109
+36 SUBI 107 109 #last one - starting point
+37 JIF 109 40 #Jump to halt
+38 ADD 106 1
+39 JIF 400 33# Jump to loop
+
+40 SYSCALL HLT
+End Instruction Section
+Begin Data Section #Thread 4
+End Data Section
+Begin Instruction Section
+SYSCALL HLT
+End Instruction Section
+Begin Data Section  #Thread 5
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section
+Begin Data Section  #Thread 6
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section
+Begin Data Section  #Thread 7
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section
+Begin Data Section  #Thread 8
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section
+Begin Data Section  #Thread 9
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section
+Begin Data Section  #Thread 10
+End Data Section
+Begin Instruction Section
+SYSCALL HLT 
+End Instruction Section

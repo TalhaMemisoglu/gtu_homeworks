@@ -1,0 +1,15 @@
+BankID_None deposit 50
+hjashfjashf withdraw 20
+N deposit -20
+N deposit 20
+BankID_01 deposit 250
+BankID_01 withdraw 150
+N deposit 1000
+BankID_02 deposit 2000
+BankID_02 withdraw 200
+BankID_03 withdraw 1000
+N deposit 1000
+N withdraw 1000
+N deposit 500
+BankID_03 deposit 1000
+BankID_03 withdraw 2000

@@ -1,0 +1,10 @@
+2025-05-31 19:40:45 - Server starting on port 5000
+2025-05-31 19:40:45 - Server listening on port 5000
+2025-05-31 19:40:50 - [LOGIN] user 'talha' connected from 127.0.0.1
+2025-05-31 19:40:55 - [LOGIN] user 'melike' connected from 127.0.0.1
+2025-05-31 19:41:02 - [FILE] Conflict: 'deneme.txt' received twice → renamed 'deneme_3.txt'
+2025-05-31 19:41:02 - [FILE-QUEUE] Upload 'deneme.txt' from talha to melike added to queue at position 1.
+2025-05-31 19:41:02 - [FILE] Started upload 'deneme.txt' from 'talha' to 'melike'. Size: 11 bytes
+2025-05-31 19:41:02 - [FILE] Success: 'deneme.txt' from 'talha' to 'melike' completed in 0.0 seconds (renamed to 'deneme_3.txt')
+2025-05-31 19:41:04 - [LOGOUT] user 'talha' disconnected. Cleaned up resources.
+Server shutdown complete

@@ -1,0 +1,18 @@
+2025-05-31 19:32:41 - Server starting on port 5000
+2025-05-31 19:32:41 - Server listening on port 5000
+2025-05-31 19:33:00 - [LOGIN] user 'talha' connected from 127.0.0.1
+2025-05-31 19:33:03 - [LOGIN] user 'melike' connected from 127.0.0.1
+2025-05-31 19:33:10 - [ROOM] New room 'teamchat' created by user 'talha'
+2025-05-31 19:33:10 - [JOIN] user 'talha' joined room 'teamchat'
+2025-05-31 19:33:16 - [ROOM] New room 'teamchat' created by user 'melike'
+2025-05-31 19:33:16 - [JOIN] user 'melike' joined room 'teamchat'
+2025-05-31 19:33:21 - [BROADCAST] user 'talha': hi
+2025-05-31 19:33:27 - [WHISPER] From 'talha' to 'melike': hi
+2025-05-31 19:33:32 - [FILE] Conflict: 'deneme.txt' received twice → renamed 'deneme_1.txt'
+2025-05-31 19:33:32 - [FILE-QUEUE] Upload 'deneme.txt' from talha to melike added to queue at position 1.
+2025-05-31 19:33:32 - [FILE] Started upload 'deneme.txt' from 'talha' to 'melike'. Size: 11 bytes
+2025-05-31 19:33:32 - [FILE] Success: 'deneme.txt' from 'talha' to 'melike' completed in 0.0 seconds (renamed to 'deneme_1.txt')
+2025-05-31 19:33:35 - [LOGOUT] user 'talha' disconnected. Cleaned up resources.
+2025-05-31 19:33:42 - [LOGOUT] user 'melike' disconnected. Cleaned up resources.
+2025-05-31 19:33:42 - [ROOM] Room 'teamchat' is now empty and marked inactive
+Server shutdown complete

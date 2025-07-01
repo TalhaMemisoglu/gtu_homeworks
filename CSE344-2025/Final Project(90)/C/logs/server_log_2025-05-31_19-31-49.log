@@ -1,0 +1,10 @@
+2025-05-31 19:31:49 - Server starting on port 5000
+2025-05-31 19:31:49 - Server listening on port 5000
+2025-05-31 19:32:02 - [LOGIN] user 'talha' connected from 127.0.0.1
+2025-05-31 19:32:17 - [LOGIN] user 'melike' connected from 127.0.0.1
+2025-05-31 19:32:22 - [FILE-QUEUE] Upload 'deneme.txt' from talha to melike added to queue at position 1.
+2025-05-31 19:32:22 - [FILE] Started upload 'deneme.txt' from 'talha' to 'melike'. Size: 11 bytes
+2025-05-31 19:32:22 - [FILE] Success: 'deneme.txt' from 'talha' to 'melike' completed in 0.0 seconds
+2025-05-31 19:32:25 - [LOGOUT] user 'talha' disconnected. Cleaned up resources.
+2025-05-31 19:32:26 - [LOGOUT] user 'melike' disconnected. Cleaned up resources.
+Server shutdown complete
