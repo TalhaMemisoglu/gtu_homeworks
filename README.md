@@ -9,5 +9,5 @@ CSE Code  | Name | Description
 [241](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE241-2023)  | Object Oriented Programming | OOP with C++ and Java
 [222](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE222-2024)  | Data Structures & Algorithms | Data Structures with Java 
 [341](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE341-2024)  | Programming Languages | Programming Languages with Lisp
-[312](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE312-2025)  | Operating Systems | Operating Systems Simulation with C++ and Custom GTU-312 Instructions
+[312](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE312-2025)  | Operating Systems | Operating System Simulation with C++ and Custom GTU-312 Instructions
 [344](https://github.com/TalhaMemisoglu/gtu_homeworks/tree/main/CSE344-2025)  | System Programming | System Programming with C
